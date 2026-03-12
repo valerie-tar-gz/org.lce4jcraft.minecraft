@@ -14,6 +14,18 @@ finish-args:
 command: minecraft
 
 modules:
+  - name: glfw
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_SHARED_LIBS:BOOL=ON
+      - -DGLFW_BUILD_EXAMPLES:BOOL=OFF
+      - -DGLFW_BUILD_TESTS:BOOL=OFF
+      - -DGLFW_BUILD_DOCS:BOOL=OFF
+    sources:
+      - type: archive
+        url: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
+        sha256: b5ec004b2712fd08e8861dc271428f048775200a2df719ccf575143ba749a3e9
+
   - name: build_minecraft
     buildsystem: meson
     builddir: true
@@ -22,7 +34,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/4jcraft/4jcraft
-        branch: dev
+        branch: feat/restore-java-gui
 
   - name: wrapper
     buildsystem: simple
