@@ -28,3 +28,4 @@ jobs:
         bundle: minecraft.flatpak
         manifest-path: org.lce4jcraft.minecraft.yml
         cache-key: flatpak-builder-${{ github.sha }}
+        arch: ${{ matrix.variant.arch }}
