@@ -23,7 +23,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/4jcraft/4jcraft
-        branch: feat/restore-java-gui
+        branch: feat/iggy-dev
 
   - name: wrapper
     buildsystem: simple
