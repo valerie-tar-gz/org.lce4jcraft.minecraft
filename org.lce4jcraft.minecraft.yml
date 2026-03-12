@@ -1,0 +1,28 @@
+app-id: org.lce4jcraft.minecraft
+runtime: org.freedesktop.Platform
+runtime-version: "25.08"
+sdk: org.freedesktop.Sdk
+
+command: minecraft
+
+modules:
+  - name: Build 4jcraft
+    buildsystem: meson
+    builddir: true
+    modules:
+      - shared-modules/glu/glu-9.json
+    sources:
+      - type: git
+        url: https://github.com/4jcraft/4jcraft
+        branch: feat/iggy-dev
+        commit: 3c066dcff831f35196cadc1c16ae6c421b464869
+
+  - name: wrapper
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 minecraft.sh /app/bin/minecraft
+    sources:
+      - type: script
+        dest-filename: minecraft.sh
+        commands:
+          - cd /app && ./Minecraft.Client "$@"
