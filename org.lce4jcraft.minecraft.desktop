@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Minecraft (4jcraft)
+Exec=minecraft %u
+Terminal=false
+SingleMainWindow=true
+Type=Application
+Comment=Ported version of Minecraft Legacy Console edition to other systems
+Categories=Game
