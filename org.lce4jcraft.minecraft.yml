@@ -11,13 +11,15 @@ finish-args:
   - --socket=pulseaudio
   - --device=dri
 
-command: minecraft
+command: 4jcraft
 
 modules:
 
   - name: build_minecraft
     buildsystem: meson
-    builddir: true
+    builddir: false
+    config-opts:
+    - --prefix=/app/share
     modules:
       - shared-modules/glu/glu-9.json
     sources:
@@ -25,20 +27,18 @@ modules:
         url: https://github.com/4jcraft/4jcraft
         branch: feat/restore-java-gui
 
-  - name: wrapper
+  - name: scripts
     buildsystem: simple
     build-commands:
-      - install -Dm755 minecraft.sh /app/bin/minecraft
-    sources:
-      - type: script
-        dest-filename: minecraft.sh
-        commands:
-          - cd /app && ./Minecraft.Client "$@"
-
-  - name: install_desktop_entry
-    buildsystem: simple
-    build-commands:
+    - install -Dm755 /app/share/Minecraft.Client /app/bin/Minecraft.Client
+    - install -Dm755 4jcraft-wrapper.sh /app/bin/4jcraft
     - install -Dm644 org.lce4jcraft.minecraft.desktop /app/share/applications/${FLATPAK_ID}.desktop
     sources:
+      - type: script
+        dest-filename: 4jcraft-wrapper.sh
+        commands:
+          - #!/bin/bash
+          - cd /app/share
+          - /app/bin/Minecraft.Client "$@"
       - type: file
         path: org.lce4jcraft.minecraft.desktop

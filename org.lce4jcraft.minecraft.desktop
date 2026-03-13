@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Minecraft (4jcraft)
-Exec=minecraft %u
+Name=4jcraft
+Exec=4jcraft %u
 Terminal=false
 SingleMainWindow=true
 Type=Application
