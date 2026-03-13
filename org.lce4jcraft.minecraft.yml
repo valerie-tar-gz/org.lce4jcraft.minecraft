@@ -1,43 +1,44 @@
 app-id: org.lce4jcraft.minecraft
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
-
-finish-args:
-  - --share=network
-  - --socket=x11
-  - --socket=wayland
-  - --socket=fallback-x11
-  - --socket=pulseaudio
-  - --device=dri
-
 command: 4jcraft
+finish-args:
+  - '--share=network'
+  - '--socket=x11'
+  - '--socket=wayland'
+  - '--socket=fallback-x11'
+  - '--socket=pulseaudio'
+  - '--device=dri'
 
 modules:
-
   - name: build_minecraft
     buildsystem: meson
     builddir: false
     config-opts:
-    - --prefix=/app/share
+      - '--prefix=/app/share'
     modules:
       - shared-modules/glu/glu-9.json
+
     sources:
       - type: git
-        url: https://github.com/4jcraft/4jcraft
+        url: 'https://github.com/4jcraft/4jcraft'
         branch: feat/restore-java-gui
 
   - name: scripts
     buildsystem: simple
     build-commands:
-    - install -Dm755 /app/share/Minecraft.Client /app/bin/Minecraft.Client
-    - install -Dm755 4jcraft-wrapper.sh /app/bin/4jcraft
-    - install -Dm644 org.lce4jcraft.minecraft.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm755 /app/share/Minecraft.Client /app/bin/Minecraft.Client
+      - install -Dm755 4jcraft-wrapper.sh /app/bin/4jcraft
+      - >-
+        install -Dm644 org.lce4jcraft.minecraft.desktop
+        /app/share/applications/${FLATPAK_ID}.desktop
+
     sources:
       - type: script
         dest-filename: 4jcraft-wrapper.sh
         commands:
-          - #!/bin/bash
+          - null
           - cd /app/share
           - /app/bin/Minecraft.Client "$@"
       - type: file
