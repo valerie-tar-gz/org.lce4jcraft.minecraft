@@ -31,6 +31,7 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 4jcraft-wrapper.sh /app/bin/4jcraft
+      - install -Dm644 io.github.yuricraft.yuricraft.png /app/share/icons/hicolor/128x128/apps/io.github.yuricraft.yuricraft.png
       - install -Dm644 io.github.yuricraft.yuricraft.desktop /app/share/applications/${FLATPAK_ID}.desktop
       - install -Dm644 $FLATPAK_ID.metainfo.xml /app/share/metainfo/$FLATPAK_ID.appdata.xml
 
@@ -40,6 +41,8 @@ modules:
         commands:
           - cd /app/share
           - /app/bin/Minecraft.Client "$@"
+      - type: file
+        path: io.github.yuricraft.yuricraft.png
       - type: file
         path: io.github.yuricraft.yuricraft.desktop
       - type: file
