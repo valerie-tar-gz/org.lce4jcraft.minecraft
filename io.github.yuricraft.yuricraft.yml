@@ -25,7 +25,7 @@ modules:
     sources:
       - type: git
         url: 'https://github.com/4jcraft/4jcraft'
-        branch: dev
+        branch: feat/iggy-dev
 
   - name: scripts
     buildsystem: simple
