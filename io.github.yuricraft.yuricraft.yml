@@ -18,10 +18,8 @@ finish-args:
       - '--prefix=/app/share'
     modules:
       - shared-modules/glu/glu-9.json
-      - shiggy.yml
     post-install:
       - install -Dm755 /app/share/Minecraft.Client /app/bin/Minecraft.Client
-
     sources:
       - type: git
         url: 'https://github.com/4jcraft/4jcraft'
