@@ -17,6 +17,17 @@ modules:
     builddir: false
     config-opts:
       - '--prefix=/app/share'
+
+    sources:
+      - type: git
+        url: 'https://github.com/4jcraft/shiggy'
+        branch: main
+
+  - name: 4jcraft
+    buildsystem: meson
+    builddir: false
+    config-opts:
+      - '--prefix=/app/share'
     modules:
       - shared-modules/glu/glu-9.json
     post-install:
