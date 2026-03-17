@@ -16,7 +16,6 @@ modules:
     buildsystem: meson
     builddir: false
     config-opts:
-      - '--prefix=/app/share'
     modules:
       - shared-modules/glu/glu-9.json
       - shiggy.yml

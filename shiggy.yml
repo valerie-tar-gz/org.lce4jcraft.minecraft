@@ -1,8 +1,6 @@
 name: shiggy
 buildsystem: meson
 builddir: false
-config-opts:
-      - '--prefix=/app/share'
 sources:
   - type: git
     url: 'https://github.com/4jcraft/shiggy'
